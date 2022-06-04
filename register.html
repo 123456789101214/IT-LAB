@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>IT SOLUTIONS</title>
+	<script src="https://kit.fontawesome.com/e4eb051004.js" crossorigin="anonymous"></script>
+	<link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: "Poppins", sans-serif;
+		}
+
+		body {
+			
+			background: #000;
+		}
+
+		.logo {
+			color: #fff;
+			font-size: 30px;
+			letter-spacing: 2px;
+			position: absolute;
+			left: 30px;
+			top: 15px;
+			text-shadow: 0 1px 1px solid #000066;
+		}
+
+		.container {
+			width: 100%;
+			height: 100vh;
+			background: #000;
+		}
+
+		nav {
+			width: 100%;
+			display: flex;
+		}
+
+		nav ul {
+			display: flex;
+			flex-direction: flex-start;
+			max-width: 1200px;
+			padding: 0;
+			margin: 0 auto;
+		}
+
+		nav ul li {
+			list-style: none;
+			position: relative;
+			padding: 10px 0;
+			margin: 5px;
+			box-sizing: border-box;
+			left: 10em;
+		}
+
+		nav ul li::after {
+			content: "";
+			height: 2px;
+			width: 0;
+			background: #ff0000;
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			transition: 0.3s;
+		}
+
+		nav ul li:hover::after {
+			width: 100%;
+			box-shadow: 0 0 18px 0px #ff0000;
+		}
+
+		nav ul li .active {
+			position: relative;
+		}
+
+		nav ul li.active::after {
+			content: "";
+			height: 2px;
+			width: 100%;
+			background: #ff0000;
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			transition: 0.3s;
+		}
+
+		nav ul li ul li {
+			left: 0;
+		}
+
+		nav a {
+			text-decoration: none;
+			color: #fff;
+			padding: 0 20px;
+			
+		}
+
+		nav ul li ul {
+			position: absolute;
+			display: block;
+			width: 200px;
+			top: 45px;
+			left: -5px;
+			text-align: left;
+			opacity: 0;
+			visibility: hidden;
+			transition: 0.3s;
+		}
+
+		nav ul li ul li::after {
+			content: "";
+			height: 2px;
+			width: 0;
+			background: #ff0000;
+			position: absolute;
+			bottom: 21px;
+			left: -2px;
+		}
+
+		nav ul li ul li::before {
+			content: "";
+			height: 2px;
+			width: 0;
+			background: #ff0000;
+			position: absolute;
+			bottom: 21px;
+			left: 95px;
+			transition: 0.3s;
+		}
+
+		nav ul li:hover ul {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		nav ul li ul li:hover::after {
+			width: 10%;
+		}
+
+		nav ul li ul li:hover::before {
+			width: 10%;
+			box-shadow: 0 0 18px 0px #ff0000;
+		}
+
+		.search {
+			width: 200px;
+			float: right;
+		}
+
+		.search input[type="text"] {
+			width: 80%;
+			border: none;
+			padding: 2px;
+			transition: 0.5s;
+		}
+
+		.search input[type="text"]:hover {
+			width: 80%;
+			opacity: 1;
+		}
+
+		.search input[type="text"]:focus {
+			border: none;
+			outline: none;
+		}
+
+		.search button {
+			background: red;
+			width: 15%;
+			padding: 2px;
+			border: 1px solid #ff0000;
+			background: transparent;
+			cursor: pointer;
+			transition: 0.4s;
+			transition-timing-function: linear;
+		}
+
+		.fa-search {
+			color: #ff0000;
+		}
+
+		.search button:hover {
+			background: #ff0000;
+		}
+
+		.search button:hover .fa-search {
+			color: #fff;
+		}
+
+		.mobnav {
+			width: 100%;
+			display: none;
+			margin-left: -12px;
+		}
+
+		.menu h3 {
+			display: inline-block;
+			padding: 2px;
+			margin-top: 12px;
+			margin-left: 3px;
+			color: #fff;
+		}
+
+		.mobnav ul {
+			display: flex;
+			flex-direction: flex-end;
+			max-width: 1200px;
+			padding: 0;
+			margin: 0 auto;
+		}
+
+		.mobnav ul li {
+			list-style: none;
+			position: relative;
+			padding: 10px 0;
+			box-sizing: border-box;
+			border-bottom: 1px solid rgba(255, 255, 255, .2);
+		}
+
+		.mobnav ul li:hover {
+			background: #ff0000;
+		}
+
+		.mobnav a {
+			text-decoration: none;
+			color: #fff;
+			padding: 0 20px;
+		}
+
+		.mobnav ul li ul {
+			position: absolute;
+			display: block;
+			width: 200px;
+			top: 55px;
+			left: 0;
+			background: #000;
+			opacity: 0;
+			visibility: hidden;
+			transition: 0.3s;
+		}
+
+		.mobnav ul li ul li{
+			border-bottom: 1px solid rgba(255, 255, 255, .2);
+		}
+
+		.mobnav ul li ul li:hover {
+			background: #ff0000;
+			
+		}
+
+		.mobnav ul li:hover ul {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.search {
+			width: 200px;
+			float: right;
+		}
+
+		.search input[type="text"] {
+			width: 80%;
+			border: none;
+			padding: 2px;
+		}
+
+		.search input[type="text"]:focus {
+			border: none;
+			outline: none;
+		}
+
+		.search button {
+			background: red;
+			width: 15%;
+			padding: 2px;
+			border: 1px solid #ff0000;
+			background: transparent;
+			cursor: pointer;
+			transition: 0.3s;
+			transition-timing-function: linear;
+		}
+
+		.fa-search {
+			color: #ff0000;
+		}
+
+		.search button:hover {
+			background: #ff0000;
+			border: 1px solid #fff;
+		}
+
+		.search button:hover .fa-search {
+			color: #fff;
+			padding: 2px;
+		}
+
+		.content {
+			background: linear-gradient(rgba(0,0,0,0.96),rgba(0,0,0,0.96)),url(img/R.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			width: 100%;
+			height: 496px;
+		}
+
+		.content h2 {
+			color: #fff;
+			font-size: 30px;
+			text-align: center;
+			margin-top: ;
+		}
+
+		.left {
+			float: left;
+			width: 45%;
+			height: 450px;
+			margin-top: 10px;
+			background: linear-gradient(rgba(0,0,0,0.80),rgba(0,0,0,0.80)),url(img/4826435.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		.right {
+			background: rgba(0, 0, 17, 0.5);
+			float: right;
+			width: 55%;
+			height: 450px;
+			margin-top: 10px;
+		}
+
+		.form {
+			width: 65%;
+			height: 450px;
+			padding: 0 10px;
+			/*margin: 0 auto;*/
+			overflow: hidden;
+			background: rgba(0, 0, 17, 0.2);
+		}
+
+		.form-text {
+			display: block;
+			width: 400px;
+			margin: 25px 0 0 45px;
+			padding: 10px 24px;
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			border-bottom: 1px solid #ff0000;
+			outline: none;
+			background: transparent;
+			transition: 0.3s;
+			position: relative;
+			color: #fff;
+		}
+
+		.form-text:focus {
+			/*box-shadow: 0 0 12px 1px #ff0000;*/
+			border-bottom: 1px solid rgba(255, 0, 0, 0.5);
+		}
+
+		#gen {
+			/*margin: 30px 0 0 43px;*/
+			/*margin: 0 auto;*/
+			/*margin: 38px 0 0 45px;*/
+			margin: 15px;
+		}
+
+		.form label {
+			color: #fff;
+			font-weight: 350;
+		}
+
+		.btn {
+			background: transparent;
+			padding: 10px 25px 10px 25px;
+			color: #fff;
+			font-size: 16px;
+			border: 2px solid rgba(255, 0, 0, 1.0);
+			/*margin: 20px 0 0 12em;*/
+			/*margin: 0 auto;*/
+			margin-top: 20px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		.btn:focus {
+			background: #ff0000;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		h3 {
+			color: #fff;
+			font-size: 15px;
+			font-weight: 300;
+			float: right;
+			margin-top: 20px;
+		}
+
+		footer {
+			margin-top: ;
+			height: 50px;	
+			color: #fff;
+			font-weight: 500;
+			font-family: Monaco;
+			background: ;
+
+		}
+
+		footer a {
+			text-decoration: none;
+			color: #fff;
+			font-family: Monaco;
+		}
+
+		a.site {
+			color: #ff0000;
+			font-family: "Poppons",sans-serif;
+		}
+
+		/*Lets Responsive It*/
+
+		@media screen and (max-width: 1095px) {
+			nav ul li {
+				left: 13em
+			}
+		}
+
+		@media screen and (max-width: 1035px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 1010px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 961px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 927px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 891px) {
+			nav {
+				display: none;
+			}
+
+			.mobnav {
+				display: block;
+			}
+
+			.mobnav ul {
+				display: block;
+				text-align: center;
+				line-height: 35px;
+			}
+
+			.mobnav ul li {
+				display: none;
+			}
+
+			.mobnav ul li ul {
+				width: 100%;
+				text-align: center;
+				z-index: 1;
+			}
+
+		}
+
+		@media screen and (max-width: 768px) {
+
+			footer {
+				font-size: 90%;
+			}
+		}
+
+		@media screen and (max-width: 523px) {
+
+			.search {
+				margin-top: 45px;
+			}
+		}
+
+		@media screen and (max-width: 425px) {
+
+			footer {
+				font-size: 90%;
+			}
+		}
+
+		@media screen and (max-width: 375px) {
+
+			.logo {
+				left: 7px;
+			}
+
+			.mobnav .menu {
+				left: 0;
+			}
+
+			.mobnav .menu h3 {
+				margin-top: 0;
+			}
+
+			.search {
+				float: right;
+				margin-top: 45px;
+				width: 100%;
+			}
+
+			.search input[type="text"] {
+				padding: 10px 12px;
+				margin-left: 7px;
+			}
+
+			.search button {
+				padding-top: 6px;
+				padding-bottom: 8px;
+				font-size: 16px;
+			}
+		}
+
+		@media screen and (max-width: 855px) {
+			.form-text {
+				margin-left: 10px;
+			}
+
+			#rmb {
+				/*margin-left: 10px;*/
+			}
+
+			.btn {
+				/*margin-left: 10em;*/
+			}
+		}
+
+		@media screen and (max-width: 790px) {
+			.left {
+				width: 100%;
+			}
+
+			.right {
+				width: 100%;
+				height: 500px;
+				display: block;
+			}
+
+			.form {
+				width: 100%;
+				height: 500px;
+				margin: 0 auto;
+			}
+
+			.form-text {
+				width: 80%;
+				margin: 0 auto;
+				padding: 25px;
+			}
+
+			#gen {
+
+			}
+
+			h3 {
+				text-align: center;
+				float: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container"><!-- container start -->
+		<a href="index.html"><h2 class="logo">IT SOLUTIONS</h2></a><br>
+		<div class="search"><!-- search start -->
+			<form action="#">
+				<input type="text" placeholder="Search..." name="search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div><!-- search end -->
+		<nav><!-- nav start -->
+			<ul>
+				<li class="active"><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="works.html">Works</a></li>
+				<li><a href="services.html">Services</a>
+					<!-- <ul>
+						<li><a href="#">Service 1</a></li>
+						<li><a href="#">Service 2</a></li>
+						<li><a href="#">Service 3</a></li>
+					</ul> -->
+				</li>
+				<li><a href="contact.php">Contact</a></li>
+			</ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</nav><br><!-- nav end -->
+
+		<div class="mobnav"><!-- mobnav start -->
+			<a href="#" class="menu"><i class="fas fa-bars fa-2x" style=" color: #ff0000; margin-top: 13px;"></i><h3>Menu</h3></a>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="works.html">Works</a></li>
+				<li><a href="services.html">Services</a>
+					<!-- <ul>
+						<li><a href="#">Service 1</a></li>
+						<li><a href="#">Service 2</a></li>
+						<li><a href="#">Service 3</a></li>
+					</ul> -->
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div><!-- mobnav end -->
+		<div class="content"><!-- content start -->
+			<center><i class="fas fa-user-plus" style="color: #ff0000; font-size: 48px;"></i><h2>Sign Up</h2></center>
+			<div class="left"><!-- left start -->
+				<!-- <img src="img/4860253.jpg" width="520"
+				height="450" alt="" style="float: right; opacity: 0.3;"> -->
+			</div><!-- left end -->
+
+			<div class="right"><!-- right start -->
+				<form action="#" method="post" class="form">
+					<!-- <i class="fas fa-user"></i>
+					<i class="fas fa-lock"></i> -->
+					<input type="text" placeholder="First Name" class="form-text">
+
+					<input type="text" placeholder="Last Name" class="form-text">
+
+					<input type="Password" placeholder="Password" class="form-text">
+
+					<input type="Password" placeholder="Re-Type Password" class="form-text">
+
+					<center><input type="radio" id="gen" name="male" value="male">
+					<label for="male">Male</label>
+
+					<input type="radio" id="gen" name="female" value="female">
+					<label for="female">Female</label></center><br>
+
+					<center><input type="submit" value="Sign-up" class="btn"></center>
+					<a href="login.php"><h3 id="log">Already Member?</h3>	</a>
+				</form>
+			</div><!-- right end -->
+		</div><!-- content end -->
+		<footer><!-- footer start -->
+				<center>2021&copy;&nbsp;&nbsp;<strong><a class="site" href="index.html">IT SOLUTIONS</a></strong></a></center>
+		</footer><!-- footer end -->
+	</div><!-- container end -->
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>IT SOLUTIONS</title>
+	<script src="https://kit.fontawesome.com/e4eb051004.js" crossorigin="anonymous"></script>
+	<link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: "Poppins", sans-serif;
+		}
+
+		body {
+			
+			background: #000;
+		}
+
+		.logo {
+			color: #fff;
+			font-size: 30px;
+			letter-spacing: 2px;
+			position: absolute;
+			left: 30px;
+			top: 15px;
+			text-shadow: 0 1px 1px solid #000066;
+		}
+
+		.container {
+			width: 100%;
+			height: 100vh;
+			background: #000;
+		}
+
+		nav {
+			width: 100%;
+			display: flex;
+		}
+
+		nav ul {
+			display: flex;
+			flex-direction: flex-start;
+			max-width: 1200px;
+			padding: 0;
+			margin: 0 auto;
+		}
+
+		nav ul li {
+			list-style: none;
+			position: relative;
+			padding: 10px 0;
+			margin: 5px;
+			box-sizing: border-box;
+			left: 10em;
+		}
+
+		nav ul li::after {
+			content: "";
+			height: 2px;
+			width: 0;
+			background: #ff0000;
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			transition: 0.3s;
+		}
+
+		nav ul li:hover::after {
+			width: 100%;
+			box-shadow: 0 0 18px 0px #ff0000;
+		}
+
+		nav ul li .active {
+			position: relative;
+		}
+
+		nav ul li.active::after {
+			content: "";
+			height: 2px;
+			width: 100%;
+			background: #ff0000;
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			transition: 0.3s;
+		}
+
+		nav ul li ul li {
+			left: 0;
+		}
+
+		nav a {
+			text-decoration: none;
+			color: #fff;
+			padding: 0 20px;
+			
+		}
+
+		nav ul li ul {
+			position: absolute;
+			display: block;
+			width: 200px;
+			top: 45px;
+			left: -5px;
+			text-align: left;
+			opacity: 0;
+			visibility: hidden;
+			transition: 0.3s;
+		}
+
+		nav ul li ul li::after {
+			content: "";
+			height: 2px;
+			width: 0;
+			background: #ff0000;
+			position: absolute;
+			bottom: 21px;
+			left: -2px;
+		}
+
+		nav ul li ul li::before {
+			content: "";
+			height: 2px;
+			width: 0;
+			background: #ff0000;
+			position: absolute;
+			bottom: 21px;
+			left: 95px;
+			transition: 0.3s;
+		}
+
+		nav ul li:hover ul {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		nav ul li ul li:hover::after {
+			width: 10%;
+		}
+
+		nav ul li ul li:hover::before {
+			width: 10%;
+			box-shadow: 0 0 18px 0px #ff0000;
+		}
+
+		.search {
+			width: 200px;
+			float: right;
+		}
+
+		.search input[type="text"] {
+			width: 80%;
+			border: none;
+			padding: 2px;
+			transition: 0.5s;
+		}
+
+		.search input[type="text"]:hover {
+			width: 80%;
+			opacity: 1;
+		}
+
+		.search input[type="text"]:focus {
+			border: none;
+			outline: none;
+		}
+
+		.search button {
+			background: red;
+			width: 15%;
+			padding: 2px;
+			border: 1px solid #ff0000;
+			background: transparent;
+			cursor: pointer;
+			transition: 0.4s;
+			transition-timing-function: linear;
+		}
+
+		.fa-search {
+			color: #ff0000;
+		}
+
+		.search button:hover {
+			background: #ff0000;
+		}
+
+		.search button:hover .fa-search {
+			color: #fff;
+		}
+
+		.mobnav {
+			width: 100%;
+			display: none;
+			margin-left: -12px;
+		}
+
+		.menu h3 {
+			display: inline-block;
+			padding: 2px;
+			margin-top: 12px;
+			margin-left: 3px;
+			color: #fff;
+		}
+
+		.mobnav ul {
+			display: flex;
+			flex-direction: flex-end;
+			max-width: 1200px;
+			padding: 0;
+			margin: 0 auto;
+		}
+
+		.mobnav ul li {
+			list-style: none;
+			position: relative;
+			padding: 10px 0;
+			box-sizing: border-box;
+			border-bottom: 1px solid rgba(255, 255, 255, .2);
+		}
+
+		.mobnav ul li:hover {
+			background: #ff0000;
+		}
+
+		.mobnav a {
+			text-decoration: none;
+			color: #fff;
+			padding: 0 20px;
+		}
+
+		.mobnav ul li ul {
+			position: absolute;
+			display: block;
+			width: 200px;
+			top: 55px;
+			left: 0;
+			background: #000;
+			opacity: 0;
+			visibility: hidden;
+			transition: 0.3s;
+		}
+
+		.mobnav ul li ul li{
+			border-bottom: 1px solid rgba(255, 255, 255, .2);
+		}
+
+		.mobnav ul li ul li:hover {
+			background: #ff0000;
+			
+		}
+
+		.mobnav ul li:hover ul {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.search {
+			width: 200px;
+			float: right;
+		}
+
+		.search input[type="text"] {
+			width: 80%;
+			border: none;
+			padding: 2px;
+		}
+
+		.search input[type="text"]:focus {
+			border: none;
+			outline: none;
+		}
+
+		.search button {
+			background: red;
+			width: 15%;
+			padding: 2px;
+			border: 1px solid #ff0000;
+			background: transparent;
+			cursor: pointer;
+			transition: 0.3s;
+			transition-timing-function: linear;
+		}
+
+		.fa-search {
+			color: #ff0000;
+		}
+
+		.search button:hover {
+			background: #ff0000;
+			border: 1px solid #fff;
+		}
+
+		.search button:hover .fa-search {
+			color: #fff;
+			padding: 2px;
+		}
+
+		.content h2 {
+			color: #fff;
+			font-size: 30px;
+			text-align: center;
+			margin-top: 18px;
+		}
+
+		.services{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			width: 100%;
+			margin: 0 auto;
+			color: #fff;
+		}
+
+		.card {
+			display: flex;
+			flex-direction: column;
+			min-width: 220px;
+			width: 320px;
+			justify-content: center;
+			align-items: center;
+			padding: 30px;
+			margin: 12px 6px;
+			/*box-shadow: 0px 8px 35px rgb(255, 0, 0,0.1);*/
+			transition: 0.3s;
+			position: relative;
+		}
+
+		.card h3 {
+			font-size: 20px;
+			color: #ff0000;
+			font-weight: 500;
+			text-align: center;
+		}
+
+		.card i {
+			color: #ff0000;
+			font-size: 50px;
+		}
+
+		.card p {
+			width: 100%;
+		}
+
+		.overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba(153, 0, 0, 0.8);
+			overflow: hidden;
+			width: 100%;
+			height: 0;
+			transition: 0.4s ease;
+		}
+
+		.btn {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background: #000;
+			padding: 10px;
+			color: #fff;
+			border-radius: 5px;
+			-webkit-transform: translate(-50%,-50%);
+			-ms-transform: translate(-50%,-50);
+			transform: translate(-50%,-50%);
+		}
+
+		.card:hover .overlay{
+			height: 100%;
+		}
+
+		.card:hover i {
+			color: #fff;
+		}
+
+		.card:hover h3 {
+			color: #fff;
+		}
+
+		.vm-btn h2 {
+			font-size: 25px;
+			color: #fff;
+			font-weight: 550;
+			text-align: center;
+		}
+
+		.vm-btn p {
+			color: #fff;
+			margin: 5px 0 29px 0;
+		}
+
+		.vm-btn a{
+			background: transparent;
+			border: 1px solid #ff0000;
+			outline: none;
+			padding: 15px;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: 0.3s ease;
+			position: relative;
+		}
+
+		.vm-btn a:after {
+			content: "Get In Touch Now";
+			position: absolute;
+			width: 100%;
+			height: 0;
+			background: rgba(153, 0, 0, 1.0);
+			top: 0;
+			bottom: 0;
+			left: 0;
+			border-radius: 4px;
+			overflow: hidden;
+			line-height: 54px;
+			transition: 0.3s ease;
+		}
+
+		.vm-btn a:hover:after {
+			height: 100%;
+		}
+
+		footer {
+			margin-top: 65px;
+			color: #fff;
+			font-weight: 500;
+			font-family: Monaco;
+
+		}
+
+		footer a {
+			text-decoration: none;
+			color: #fff;
+			font-family: Monaco;
+		}
+
+		a.site {
+			color: #ff0000;
+			font-family: "Poppons",sans-serif;
+		}
+
+
+		/*Lets Responsive It*/
+
+		@media screen and (max-width: 1095px) {
+			nav ul li {
+				left: 13em
+			}
+		}
+
+		@media screen and (max-width: 1035px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 1010px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 961px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 927px) {
+			nav ul li{
+				left: 
+			}
+		}
+
+		@media screen and (max-width: 891px) {
+			nav {
+				display: none;
+			}
+
+			.mobnav {
+				display: block;
+			}
+
+			.mobnav ul {
+				display: block;
+				text-align: center;
+				line-height: 35px;
+			}
+
+			.mobnav ul li {
+				display: none;
+			}
+
+			.mobnav ul li ul {
+				width: 100%;
+				text-align: center;
+				z-index: 1;
+			}
+
+		}
+
+		@media screen and (max-width: 768px) {
+
+			footer {
+				font-size: 90%;
+			}
+		}
+
+		@media screen and (max-width: 523px) {
+
+			.search {
+				margin-top: 45px;
+			}
+		}
+
+		@media screen and (max-width: 425px) {
+
+			footer {
+				font-size: 90%;
+			}
+		}
+
+		@media screen and (max-width: 375px) {
+
+			.logo {
+				left: 7px;
+			}
+
+			.mobnav .menu {
+				left: 0;
+			}
+
+			.mobnav .menu h3 {
+				margin-top: 0;
+			}
+
+			.search {
+				float: right;
+				margin-top: 45px;
+				width: 100%;
+			}
+
+			.search input[type="text"] {
+				padding: 10px 12px;
+				margin-left: 7px;
+			}
+
+			.search button {
+				padding-top: 6px;
+				padding-bottom: 8px;
+				font-size: 16px;
+			}
+		}
+
+		@media screen and (max-width: 670px) {
+			.services {
+				width: 100%
+				margin: 0 auto;
+			}
+
+			.card {
+				width: 60%;
+				margin: 0 auto;
+			}
+		}
+
+		@media screen and (max-width: 600px) {
+			.services {
+				width: 100%;
+				margin: 0 auto;
+			}
+
+			.card {
+				width: 100%;
+				margin: 0 auto;
+			}
+		}
+
+		@media screen and (max-width: 400px) {
+			.services {
+				width: 100%;
+				flex-direction: column;
+			}
+
+			.card {
+				min-width: 330px;
+				margin: 10px auto;
+			}
+		}
+
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="index.html"><h2 class="logo">IT SOLUTIONS</h2></a><br>
+		<div class="search">
+				<form action="#">
+					<input type="text" placeholder="Search..." name="search">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+		<nav>
+			<ul>
+				<li class="active"><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="works.html">Works</a></li>
+				<li><a href="services.html">Services</a>
+					<!-- <ul>
+						<li><a href="#">Service 1</a></li>
+						<li><a href="#">Service 2</a></li>
+						<li><a href="#">Service 3</a></li>
+					</ul> -->
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</nav><br>
+
+		<div class="mobnav">
+			<a href="#" class="menu"><i class="fas fa-bars fa-2x" style=" color: #ff0000; margin-top: 13px;"></i><h3>Menu</h3></a>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="works.html">Works</a></li>
+				<li><a href="services.html">Services</a>
+					<!-- <ul>
+						<li><a href="#">Service 1</a></li>
+						<li><a href="#">Service 2</a></li>
+						<li><a href="#">Service 3</a></li>
+					</ul> -->
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+
+		<div class="content">
+			<h2>Our Services</h2>
+			<center><div class="services">
+				<div class="card">
+					<i class="fab fa-connectdevelop"></i>
+					<h3>Web Development</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-code"></i>
+					<h3>Web Development</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-users"></i>
+					<h3>Seo</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-layer-group"></i>
+					<h3>Web Development</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-laptop-code"></i>
+					<h3>Web Development</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fab fa-connectdevelop"></i>
+					<h3>Software Development</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-thumbs-up"></i>
+					<h3>Digital Marketing</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-mobile-alt"></i>
+					<h3>Mobile App Development</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						<a href="#"><div class="btn">Learn More</div></a>
+					</div>
+				</div>
+				<div class="card">
+					<!-- <i class="fas fa-code"></i>
+					<h3>Web Development</h3>
+					<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Ad sunt fugiat accusantium, cupiditate, ducimus quia recusandae non. Ratione, dolores, cum.</p>
+					<div class="overlay">
+						
+					</div> -->
+				</div>
+			</div></center>
+		</div>
+		<center><div class="vm-btn">
+			<h2>Want To See Us In Action?</h2>
+			<p>Get in touch and learn about our works and solutions for your business</p>
+			<a href="#">Get In Touch Now</a>
+		</div></center>
+		<footer>
+			<center>2021&copy;&nbsp;&nbsp;<strong><a class="site" href="index.html">IT SOLUTIONS</a></strong></a></center>
+		</footer>
+	</div>
+	<script>
+		$(document).ready(
+				function(){
+					$('.mobnav .menu').click(
+						function(){
+							$('.mobnav ul li').slideToggle();
+						})
+				})		
+	</script>
+</body>
+</html>
